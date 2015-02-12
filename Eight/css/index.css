@@ -1,0 +1,266 @@
+@charset "utf-8";
+
+@font-face {
+	font-family: "nicomoji";
+	src: url("../fonts/nicomoji.eot");
+	src: url("../fonts/nicomoji.ttf") format("truetype");
+}
+
+*{
+	margin:0px;
+	padding:0px;
+}
+
+html,body{
+	width:100%;
+	height:100%;
+	font-family: "nicomoji", Arial, sans-serif;
+}
+
+a{
+	color:#0000FF;
+}
+
+#divNgScreenCtrl{
+	width:100%;
+	height:100%;
+}
+
+#container{
+	position:relative;
+	top:0;
+	left:0;
+	padding-top:30px;
+	width:850px;
+	margin:0 auto;
+	height:565px;
+}
+
+.buttonA1{
+	color:#FFFFFF;
+	background-color:#555555;
+	border:2px solid #AAAAAA;
+	padding:1px 5px;
+	text-decoration:none;
+}
+.buttonA1:hover{
+	color:#FFFFFF;
+	background-color:#555555;
+	border:2px solid #AAAAAA;
+	padding:1px 5px;
+	text-decoration:underline;
+}
+
+
+
+/*---- ルームリストダイアログ ----*/
+#dialogWrapper{
+	position:relative;
+	background-color:#444444;
+	width:100%;
+	height:100%;
+	margin:0px auto;
+}
+.dialogContent{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	background-color:#FFFFFF;
+	width:800px; 
+	height:393px;
+	border:10px solid #444444;
+	padding:15px 30px 10px 30px;
+	-moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    border-radius: 30px;
+}
+.dialogContent div{
+	background-color:#FFFFFF;
+	position:relative;
+	-moz-border-radius: 20px 20px 0px 0px;
+    -webkit-border-radius: 20px 20px 0px 0px;
+    border-radius: 20px 20px 0px 0px;
+}
+#divInputUserRoom{
+	text-align:left;
+	margin:10px 0px;
+}
+.roomListDialogCap{
+	font-size:40px;
+	color:#333333;
+}
+.dialogContent .div_border{
+	width:800px;
+	height:2px;
+	background-color:#666666;
+	margin-bottom:10px;
+}
+
+#divRoomList{
+	text-align:left;
+	border:1px solid #555555;
+	height:275px;
+	overflow-y: scroll;
+	-moz-border-radius: 0px 0px 0px 0px;
+    -webkit-border-radius: 0px 0px 0px 0px;
+    border-radius: 0px 0px 0px 0px;
+}
+.roomListItem{
+	text-align:left;
+	padding:5px 0px 5px 5px;
+	position:relative;
+	left:0px;
+	top:0px;
+	margin:2px 0px;
+	background-color:#DDDDDD;
+}
+.roomListItemState{
+	display:inline-block;
+	width:150px;
+	text-align:center;
+	border:1px solid #444444;
+	margin-right:10px;
+}
+.roomListHr{
+	margin-top:5px;
+}
+.linkEnterRoom{
+	text-align:right;
+	position:absolute;
+	right:20px;
+	top:3px;
+}
+
+
+
+/*---- グリッド ----*/
+.grid-container {
+	float:left;
+	width:565px;
+	z-index: 1;
+}
+
+.grid-row {
+	margin-bottom: 5px;
+}
+.grid-row:last-child{
+    margin-bottom: 0;
+}
+.grid-row:after{
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.grid-cell {
+	width: 66.25px;
+	height: 66.25px;
+	margin-right: 5px;
+	float: left;
+	border-radius: 3px;
+	background: rgba(238, 228, 218, 0.35);
+	text-align: center;
+	position: relative;
+	top: 0;
+	left: 0;
+}
+.grid-cell:last-child{
+    margin-right: 0;
+}
+.g-state-normal{
+	background: rgba(20, 20, 20, 0.35);
+	cursor:pointer;
+}
+.g-state-myclick{
+	background: rgba(180, 20, 20, 0.35);
+	cursor:pointer;
+}
+.g-state-clicked{
+	background: rgba(20, 20, 180, 0.35);
+	cursor:pointer;
+}
+
+.g-number-text{
+	position: absolute;
+	top: -26px;
+	left: -20px;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	width: 5px;
+	height: 5px;
+	font-size: 30px;
+}
+
+
+
+/*---- ゲーム情報画面 ----*/
+#div-big-msg{
+	visibility:visible;
+	position:absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin:250px auto 0px auto;
+	font-size:50px;
+	text-align:center;
+	width:800px;
+}
+
+#div-count-msg{
+	visibility:hidden;
+	position:absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin:100px auto 0px auto;
+	font-size:350px;
+	text-align:center;
+	width:300px;
+}
+
+#div-gameinfo{
+	float:left;
+	width:250px;
+	margin-left:15px;
+	padding:0px 10px 0px 10px;
+	background-color:rgba(100,100,100,0.4);
+	height:100%;
+}
+
+#div-gameinfo h3{
+	text-align:center;
+	font-size: 30px;
+}
+
+#btnStartGame{
+	margin-top:3px;
+	font-size:24px;
+	color:#FFFFFF;
+	background-color:#555555;
+	border:2px solid #AAAAAA;
+	padding:1px 5px;
+	text-decoration:none;
+	font-family: "nicomoji", Arial, sans-serif;
+}
+#btnStartGame:hover{
+	color:#FFFFFF;
+	background-color:#555555;
+	border:2px solid #AAAAAA;
+	text-decoration:underline;
+	cursor:pointer;
+}
+#btnStartGame:disabled{
+	color:#DDDDDD;
+	background-color:#BBBBBB;
+	border:2px solid #AAAAAA;
+	text-decoration:none;
+}
+
+
+

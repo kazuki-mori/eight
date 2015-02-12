@@ -1,0 +1,21 @@
+<div id="dialogWrapper">
+	<div id="roomListDialog" class="dialogContent">
+		<div><span class="roomListDialogCap">Room list</span>
+		</div>
+		<div id="divInputUserRoom">Your name&nbsp;:&nbsp;<input id="entryUserName" ng-model="user_name" />
+		<a id="createRoomLink"  href="javascript:void(0);" ng-click="ngCreateRoom();" class="buttonA1">create room</a></div>
+
+		<div class="div_border"></div>
+
+		<div id="divRoomList">
+			<div class="roomListItem" ng-repeat="user in users|orderBy:'state'" ng-if="user.roomer == '1'">
+			<span ng-if="user.state == '1'" class="roomListItemState">waiting</span>
+			<span ng-if="user.state != '1'" class="roomListItemState">doing</span>
+			User name&nbsp;:&nbsp;{{user.name}}
+			<a ng-if="user.state == '1'" href="javascript:void(0);" ng-click="ngEnterRoom(user._id, user.name);" 
+				class="buttonA1 linkEnterRoom">enter room</a>
+			<hr class="roomListHr">
+			</div>
+		</div>
+	</div>
+</div>
