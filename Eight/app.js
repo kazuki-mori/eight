@@ -108,7 +108,7 @@ mongodb.MongoClient.connect("mongodb://107.167.176.146:27017/eightdb", function(
   users = db.collection("users");
   boards = db.collection("boards");
   //dbに接続完了の後、サーバーリッスン開始
-  server.listen(process.env.PORT || 3000, function(){});
+  server.listen(process.env.PORT || 8080, function(){});
   console.log("server start");
 });
 
