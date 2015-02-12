@@ -103,7 +103,7 @@ io.sockets.on("connection", function (socket) {
 /*
 	mongodb関連
 */
-mongodb.MongoClient.connect("mongodb://localhost:27017/eightdb", function(err, database) {
+mongodb.MongoClient.connect("mongodb://107.167.176.146:27017/eightdb", function(err, database) {
   db = database;
   users = db.collection("users");
   boards = db.collection("boards");
