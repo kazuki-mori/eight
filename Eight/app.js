@@ -103,13 +103,19 @@ io.sockets.on("connection", function (socket) {
 /*
 	mongodb関連
 */
-mongodb.MongoClient.connect("mongodb://107.167.176.146:27017/eightdb", function(err, database) {
-  db = database;
-  users = db.collection("users");
-  boards = db.collection("boards");
-  //dbに接続完了の後、サーバーリッスン開始
-  server.listen(process.env.PORT || 8080, function(){});
-  console.log("server start");
+var mongoDBUriString = "mongodb://107.167.176.146:27017/eightdb";
+mongodb.MongoClient.connect(mongoDBUriString, function(err, database) {
+     if (err) {
+     	console.log ("ERROR mongodb connecting to: " + mongoDBUriString + ". " + err);
+     } else {
+        console.log ("SUCCESS mongodb connected to: " + mongoDBUriString);
+		db = database;
+		users = db.collection("users");
+		boards = db.collection("boards");
+		//dbに接続完了の後、サーバーリッスン開始
+		server.listen(process.env.PORT || 3000, function(){});
+		console.log("server start");
+	}
 });
 
 // 一覧取得(ユーザー)
