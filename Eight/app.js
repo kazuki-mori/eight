@@ -103,7 +103,7 @@ io.sockets.on("connection", function (socket) {
 /*
 	mongodb関連
 */
-var mongoDBUriString = "mongodb://107.167.176.146:27017/eightdb";
+var mongoDBUriString = "mongodb://localhost:27017/eightdb";
 mongodb.MongoClient.connect(mongoDBUriString, function(err, database) {
      if (err) {
      	console.log ("ERROR mongodb connecting to: " + mongoDBUriString + ". " + err);
