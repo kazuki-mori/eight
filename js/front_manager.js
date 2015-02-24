@@ -1,5 +1,5 @@
 /*
-	-- game_manager.js --
+	-- front_manager.js --
 	Copyright K.MORI
 	Ver 1.01
 */
@@ -53,6 +53,7 @@ app.controller("RoomListCtrl", function($scope, $route, $location, User) {
 	if("" != myName){
 		//自分のユーザーデータ削除
 		User.delete({_id: myName}, function() { });
+		socket.emit("C_to_S_message", {value:"changeRoom#user_out"});
 	}
 	// 新規ルーム作成関数
 	$scope.ngCreateRoom = function() {
@@ -86,8 +87,8 @@ app.controller("RoomListCtrl", function($scope, $route, $location, User) {
 		newUser.state = "1";
 		newUser.roomer = "1";
     	User.save(newUser, function(data) { });
-		$scope.users = User.query();
-		$scope.$apply();
+		//$scope.users = User.query();
+		//$scope.$apply();
 		$location.url('/game/owner');
 		socket.emit("C_to_S_message", {value:"changeRoom#owner"});
     };
@@ -116,8 +117,8 @@ app.controller("RoomListCtrl", function($scope, $route, $location, User) {
 		roomUser.state = "2";
 		roomUser.roomer = "1";
     	User.save(roomUser, function() { });
-		$scope.users = User.query();
-		$scope.$apply();
+		//$scope.users = User.query();
+		//$scope.$apply();
 		$location.url('/game/enter');
 		socket.emit("C_to_S_message", {value:"changeRoom#enter"});
     };
@@ -177,7 +178,8 @@ var clickStartGame = function(){
 	return;
 };
 
-var socket = io.connect(); //リモート接続
+//var socket = io.connect("http://172.23.48.238:3000/");
+var socket = io.connect(location.origin);
 //サーバから受け取るイベント
 socket.on("connect", function () {});  // 接続時
 socket.on("disconnect", function (client) {});  // 切断時
@@ -185,8 +187,13 @@ socket.on("S_to_C_message", function (data) {
 	var dataArray = data.value.split("#");
 	var dataType = dataArray[0];
 	var dataVal = dataArray[1];
+	var current_url = location.href;
+	var is_page_game = true;
+	if(current_url.indexOf("game") < 0){
+		is_page_game = false;
+	}
 	//ユーザー(ルーム)変更通知の場合
-	if("changeRoom" == dataType){
+	if("changeRoom" == dataType && !is_page_game){
         var roomCtrlScope = angular.element(divNgScreenCtrl).scope();
 		roomCtrlScope.updateScreen();
 	}
